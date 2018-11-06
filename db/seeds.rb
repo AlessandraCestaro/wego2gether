@@ -63,4 +63,14 @@ Trip.all.each do |trip|
 end
 
 
+puts "Creating votes.."
+
+User.all.each do |user|
+	user.trips.each do |trip|
+		trip.destinations.each do |destination|
+			Vote.create!(user: user, destination: destination, rating: rand(0..5))
+		end	
+	end
+end
+
 
