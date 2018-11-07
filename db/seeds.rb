@@ -38,6 +38,7 @@ end
 
 puts "Creating trips.."
 
+
 ["Vamos", "LetsGo", "Hasta Luego"].each do |trip_name|
 	Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader)
 end 
