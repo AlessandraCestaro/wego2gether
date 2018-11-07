@@ -7,5 +7,6 @@ class VotesController < ApplicationController
 
 	def create
 		#save the record to the DB
+		
 	end
 end
