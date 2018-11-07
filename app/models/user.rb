@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :managed_trips, foreign_key: "user_id", class_name: "Trip"
   has_many :votes, dependent: :destroy
 
+  validates :first_name, :last_name, :phone_number, presence: true
+
 end
