@@ -39,6 +39,7 @@ end
 puts "Creating trips.."
 
 date = Date.today + 7
+
 ["Vamos", "LetsGo", "Hasta Luego"].each do |trip_name|
 	date = Date.new()
 	Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader, deadline_date: date)
