@@ -1,0 +1,18 @@
+<h1>The Vote</h1>
+<h2>Rate your destinations here</h2>
+
+<%= simple_form_for [@trip, @vote] do |f| %>
+
+<ul>
+  <% @destinations.each do |destination| %>
+      <%= destination.city %>
+
+      <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
+
+      <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
+  <% end %>
+</ul>
+
+<%= f.button :submit, value: 'Submit score' %>
+<% end %>
+
