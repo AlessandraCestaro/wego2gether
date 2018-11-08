@@ -45,4 +45,17 @@ class Trip < ApplicationRecord
     users
   end
 
+  def winning_destination
+    sum_votes = []
+    self.destinations.each do |destination|
+      sum = 0
+      destination.votes.each do |vote|
+       sum += vote.rating
+       if sum >= sum_votes.max
+        sum_votes.push(destination)
+       end
+      end
+    end
+  end
+
 end

@@ -3,7 +3,23 @@
 <!-- if all users have voted || if trip.deadline_date < today
 display FINAL DESTINATION + MEMBERS-->
 
+<% if @trip.invited_users_all.size == @trip.users_voted.size || @trip.deadline_date < today %>
 
+<h2>The winning destination is:</h2>
+<%= @trip.winning_destination %>
+
+<h3>Participants are:</h3>
+<ul>
+  <% @accepted.each do |user| %>
+    <li>
+    <%= user.first_name %>
+    </li>
+  <% end %>
+</ul>
+
+
+<% else %>
+<!-- ELSE: If not all users have voted and trip has not expired -->
 <h1> <%= @trip.name %> </h1>
 <img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
 
@@ -48,3 +64,4 @@ display FINAL DESTINATION + MEMBERS-->
   <% end %>
 </ul>
 
+<% end %>

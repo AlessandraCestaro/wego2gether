@@ -1,12 +1,9 @@
 class TripsController < ApplicationController
 
 	def index
-    @
+		# DASHBOARD: ALL TRIPS
     # if current_user has already voted this trip --> show
     # else redirect to vote
-
-		# DASHBOARD: ALL TRIPS
-    # @user = User.find(params[:user_id])
 	end
 
 	def show
