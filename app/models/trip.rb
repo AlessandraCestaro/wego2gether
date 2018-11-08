@@ -40,8 +40,9 @@ class Trip < ApplicationRecord
   def users_accepted_no_vote
     users = []
       self.invited_users_accepted.each do |user|
-        users.push(user) unless self.invited_users_accepted.include?(self.users_voted)
+        users.push(user) unless self.users_voted.include?(user)
       end
+    users
   end
 
 end

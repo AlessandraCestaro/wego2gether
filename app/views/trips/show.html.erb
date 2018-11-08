@@ -1,5 +1,9 @@
 <!-- show.html.erb -->
 
+<!-- if all users have voted || if trip.deadline_date < today
+display FINAL DESTINATION + MEMBERS-->
+
+
 <h1> <%= @trip.name %> </h1>
 <img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
 
@@ -43,3 +47,4 @@
     </li>
   <% end %>
 </ul>
+

@@ -5,6 +5,7 @@
   <h2>You manage:</h2>
   <% current_user.managed_trips.each do |trip| %>
     <li>
+<!--       <% #if current_user.  %> -->
       <%= link_to trip.name, trip_path(trip.id)%>
       <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
     </li>
