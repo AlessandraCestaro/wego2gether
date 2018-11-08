@@ -1,0 +1,9 @@
+<h1>YOU HAVE BEEN INVITED</h1>
+
+
+<%= @trip.name %>
+
+<%= simple_form_for [@trip, @user_trip] do |f| %>
+  <%= f.button :submit, name: "user_trip[state]", value: "accepted" %>
+  <%= f.button :submit, name: "user_trip[state]", value: "declined" %>
+<% end %>
