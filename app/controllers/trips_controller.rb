@@ -6,7 +6,14 @@ class TripsController < ApplicationController
 	end
 
 	def show
-		#TRIP STATUS (depending on whether I have voted already)
+		@trip = Trip.find(params[:id])
+    @pending = @trip.invited_users_pending
+    @accepted = @trip.invited_users_accepted
+    @declined = @trip.invited_users_declined
+    @voted = @trip.users_voted
+    @novoted = @trip.users_accepted_no_vote
+
+    #TRIP STATUS (depending on whether I have voted already)
 		#show members (accepted, declined, pending, voted)
 		#show final destination when available or time is out
 	end
@@ -81,7 +88,7 @@ end
 
 ### params in trips/new ###
 
-#{"utf8"=>"✓", "authenticity_token"=>"Uaoy0j5MQLfX6j5P7MTml+TR1WKgjD74UWYb023akcKcn2x+KQwCGX5wchpgH8F1+oeFZGISUnMoUk2tQdPLtw==", 
+#{"utf8"=>"✓", "authenticity_token"=>"Uaoy0j5MQLfX6j5P7MTml+TR1WKgjD74UWYb023akcKcn2x+KQwCGX5wchpgH8F1+oeFZGISUnMoUk2tQdPLtw==",
 #
 # "trip"=>{
 # 	"name"=>"trip test",
@@ -98,15 +105,15 @@ end
 ### params in trips/:id/edit ###
 
 
-#"trip"=><ActionController::Parameters 
-# {"friends"=>[<ActionController::Parameters 
-# {"first_name"=>"Bob", "last_name"=>"Bob", "phone_number"=>"555555555"} 
-# permitted: false>, <ActionController::Parameters 
-# {"first_name"=>"George", "last_name"=>"George", "phone_number"=>"666666666"} 
-# permitted: false>, <ActionController::Parameters 
-# {"first_name"=>"Tom", "last_name"=>"Tom", "phone_number"=>"3333333333"} 
-# permitted: false>, <ActionController::Parameters 
-# {"first_name"=>"Marta", "last_name"=>"Marta", "phone_number"=>"111111111"} 
-# permitted: false>, <ActionController::Parameters 
-# {"first_name"=>"", "last_name"=>"", "phone_number"=>""} permitted: false>]} 
+#"trip"=><ActionController::Parameters
+# {"friends"=>[<ActionController::Parameters
+# {"first_name"=>"Bob", "last_name"=>"Bob", "phone_number"=>"555555555"}
+# permitted: false>, <ActionController::Parameters
+# {"first_name"=>"George", "last_name"=>"George", "phone_number"=>"666666666"}
+# permitted: false>, <ActionController::Parameters
+# {"first_name"=>"Tom", "last_name"=>"Tom", "phone_number"=>"3333333333"}
+# permitted: false>, <ActionController::Parameters
+# {"first_name"=>"Marta", "last_name"=>"Marta", "phone_number"=>"111111111"}
+# permitted: false>, <ActionController::Parameters
+# {"first_name"=>"", "last_name"=>"", "phone_number"=>""} permitted: false>]}
 # permitted: false>, "commit"=>"Send Invites", "controller"=>"trips", "action"=>"update", "id"=>"5"} permitted: false>

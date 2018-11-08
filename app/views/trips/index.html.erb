@@ -14,7 +14,7 @@
 
 <!-- Display invited-to trips of current user: -->
 <ul>
-  <h2>You are accepted to</h2>
+  <h2>You will be participating to::</h2>
   <% current_user.accepted_trips.each do |trip| %>
     <% if trip.user != current_user %>
       <li>
@@ -28,7 +28,7 @@
 
 <!-- Display invited-to trips of current user: -->
 <ul>
-  <h2>You are invited to</h2>
+  <h2>You are invited to:</h2>
   <% current_user.pending_trips.each do |trip| %>
     <% if trip.user != current_user %>
       <li>
