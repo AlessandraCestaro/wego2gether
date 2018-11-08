@@ -18,6 +18,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'country_select'
 
+gem 'twilio-ruby', '~> 5.15.2'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
