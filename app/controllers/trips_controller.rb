@@ -75,6 +75,11 @@ class TripsController < ApplicationController
 		    end
 		end
 
+    # I HAVE USERS
+    @trip.users.each do |user|
+      SendNotification.new(user, @trip).send_invitation
+    end
+
 		redirect_to new_trip_vote_path(@trip)
 	end
 
