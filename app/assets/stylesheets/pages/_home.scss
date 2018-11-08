@@ -1,3 +1,15 @@
+.homepage-grid {
+  display: grid;
+  grid-template-rows: 20% 70% 10%;
+}
+
+.home-login-btn {
+  grid-row: 1 / span 1;
+}
+
+.btn-light {
+  font-color: #009688
+}
 // Specific CSS for your home-page
 .home-content {
 	background-color: blue;
