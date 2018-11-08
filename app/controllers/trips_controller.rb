@@ -33,11 +33,13 @@ class TripsController < ApplicationController
 		@trip.user_id = current_user[:id]
 		@trip.save
 		params["trip"]["destinations"].each do |destination|
-			Destination.create(
+			if !destination["city"].blank? #or use next
+			  Destination.create(
 				trip: @trip,
 				city: destination["city"],
 				country: destination["country"]
-			)
+			  )
+		    end
 		end
 
 		redirect_to edit_trip_path(@trip[:id])
@@ -53,21 +55,24 @@ class TripsController < ApplicationController
 		#post >>> update the friends' list
 		@trip = Trip.find(params[:id])
 		@trip.update(trip_params)
+		user = current_user
 
 		params["trip"]["friends"].each do |friend|
-			user = User.create(
+			if !friend["phone_number"].blank?
+			  user = User.create(
 				first_name: friend["first_name"],
 				last_name: friend["last_name"],
 				phone_number: friend["phone_number"],
-			)
-			UserTrip.create(
+			  )
+			  UserTrip.create(
 				trip_id: @trip[:id],
-				user: @user[:id],
-				status: "pending"
-		    )
+				user_id: user[:id],
+				state: "pending"
+		      )
+		    end
 		end
 
-		redirect_to new_trip_votes(@trip)
+		redirect_to new_trip_vote_path(@trip)
 	end
 
 	def destroy
