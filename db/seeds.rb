@@ -34,8 +34,13 @@ emails.each do |email|
 	phone_number = 3342900726
 	User.create!(first_name: user_first_names.sample, last_name: user_last_names.sample, email: email, password: "123456", password_confirmation: "123456", phone_number: phone_number.to_s )
 	phone_number += 1
-end 
+end
 
+# Ale's accounts
+ale = User.create!(email: "acestaro@gmail.com", password: "alealeale", password_confirmation: "alealeale", first_name: "Alessandra", last_name: "Cestaro", phone_number: "+393452504867")
+ale2 = User.create!(email: "acestaro2@gmail.com", password: "alealeale", password_confirmation: "alealeale", first_name: "Ale", last_name: "Cest", phone_number: "+393202651926")
+
+# REGULAR SEEDS
 puts "Creating trips.."
 
 date = Date.today + 7
@@ -43,15 +48,18 @@ date = Date.today + 7
 ["Vamos", "LetsGo", "Hasta Luego"].each do |trip_name|
 	date = Date.new()
 	Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader, deadline_date: date)
-end 
+end
 
 puts "Creating user_trips.."
 
+state = ["accepted", "pending", "declined"]
+
 Trip.all.each do |trip|
-	User.all.each do |user|
-		UserTrip.create!(trip: trip, user: user, state: "accepted")	
-	end
+  User.all.each do |user|
+    UserTrip.create!(trip: trip, user: user, state: state.sample)
+  end
 end
+
 
 puts "Creating destinations.."
 
@@ -69,11 +77,10 @@ end
 puts "Creating votes.."
 
 User.all.each do |user|
-	user.trips.each do |trip|
+	user.accepted_trips.each do |trip|
 		trip.destinations.each do |destination|
 			Vote.create!(user: user, destination: destination, rating: rand(0..5))
-		end	
+		end
 	end
 end
-
 
