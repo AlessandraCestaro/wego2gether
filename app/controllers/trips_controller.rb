@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
 		# DASHBOARD: ALL TRIPS
@@ -68,18 +69,16 @@ class TripsController < ApplicationController
 				first_name: friend["first_name"],
 				last_name: friend["last_name"],
 				phone_number: friend["phone_number"],
+				email: "#{friend["phone_number"]}@friend.com",
+				password: "invitedfriend2018"
 			  )
 			  UserTrip.create(
-				trip_id: @trip[:id],
-				user_id: user[:id],
+				trip: @trip,
+				user: user
 		      )
+            SendNotification.new(user, @trip).send_invitation
 		    end
 		end
-
-    # I HAVE USERS
-    @trip.users.each do |user|
-      SendNotification.new(user, @trip).send_invitation
-    end
 
 		redirect_to new_trip_vote_path(@trip)
 	end
