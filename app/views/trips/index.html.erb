@@ -5,8 +5,12 @@
   <h2>You manage:</h2>
   <% current_user.managed_trips.each do |trip| %>
     <li>
-      <%= link_to trip.name, trip_path(trip.id)%>
-      <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
+      <% if (trip.users_voted.include?(current_user)) || (trip.deadline_date < Date.today) %>
+        <%= link_to trip.name, trip_path(trip)%>
+      <% else %>
+        <%= link_to trip.name, new_trip_vote_path(trip)%>
+      <% end %>
+        <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
     </li>
   <% end %>
 </ul>
@@ -14,12 +18,16 @@
 
 <!-- Display invited-to trips of current user: -->
 <ul>
-  <h2>You are accepted to</h2>
+  <h2>You will be participating to::</h2>
   <% current_user.accepted_trips.each do |trip| %>
     <% if trip.user != current_user %>
       <li>
-        <%= link_to trip.name, trip_path(trip.id)%>
-        <%= link_to image_tag(trip.picture, size: "100x100"), trip_path(trip.id) %>
+        <% if (trip.users_voted.include?(current_user)) || (trip.deadline_date < Date.today) %>
+          <%= link_to trip.name, trip_path(trip)%>
+        <% else %>
+          <%= link_to trip.name, new_trip_vote_path(trip)%>
+        <% end %>
+        <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
       </li>
     <% end %>
   <% end %>
@@ -28,12 +36,17 @@
 
 <!-- Display invited-to trips of current user: -->
 <ul>
-  <h2>You are invited to</h2>
+  <h2>You are invited to:</h2>
   <% current_user.pending_trips.each do |trip| %>
-    <% if trip.user != current_user %>
+    <% usertrip = UserTrip.find_by(user: current_user, trip: trip) %>
+    <% if (trip.user != current_user) %>
       <li>
-        <%= link_to trip.name, trip_path(trip.id)%>
-        <%= link_to image_tag(trip.picture, size: "100x100"), trip_path(trip.id) %>
+        <% if (trip.deadline_date >= Date.today) %>
+        <%= link_to trip.name, trip_user_trip_path(trip, usertrip)%>
+      <% else %>
+        <%= link_to trip.name, declined_trip_user_trip_path(trip, usertrip)%>
+      <% end %>
+      <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
       </li>
     <% end %>
   <% end %>

@@ -2,11 +2,19 @@ class TripsController < ApplicationController
 
 	def index
 		# DASHBOARD: ALL TRIPS
-    # @user = User.find(params[:user_id])
+    # if current_user has already voted this trip --> show
+    # else redirect to vote
 	end
 
 	def show
-		#TRIP STATUS (depending on whether I have voted already)
+		@trip = Trip.find(params[:id])
+    @pending = @trip.invited_users_pending
+    @accepted = @trip.invited_users_accepted
+    @declined = @trip.invited_users_declined
+    @voted = @trip.users_voted
+    @novoted = @trip.users_accepted_no_vote
+
+    #TRIP STATUS (depending on whether I have voted already)
 		#show members (accepted, declined, pending, voted)
 		#show final destination when available or time is out
 	end
