@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
+
 
 	def new
 		#votes page >>>> create an instance of vote
