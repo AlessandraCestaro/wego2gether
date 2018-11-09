@@ -1,24 +1,28 @@
-<!-- new.html.erb -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-4"><!-- new.html.erb -->
+      <%= simple_form_for @trip do |f| %>
+        <%= f.input :name %>
 
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :name %>
+      <%= f.fields_for :destinations do |ff| %>
+               <% 3.times do |i| %>
 
-<%= f.fields_for :destinations do |ff| %>
-         <% 3.times do |i| %>
-
-         <div class="row">
-           <div class="col-md-6">
-             <%= ff.input :city, input_html: { name: "trip[destinations][][city]" } %>
-           </div>
-           <div class="col-md-6">
-             <%= ff.input :country, input_html: { name: "trip[destinations][][country]" } %>
-           </div>
-         </div>
- <% end %>
-<% end %>
+               <div class="row">
+                 <div class="col-md-6">
+                   <%= ff.input :city, input_html: { name: "trip[destinations][][city]" } %>
+                 </div>
+                 <div class="col-md-6">
+                   <%= ff.input :country, input_html: { name: "trip[destinations][][country]" } %>
+                 </div>
+               </div>
+       <% end %>
+      <% end %>
 
 
-<%= f.submit "Create your trip", class: "btn btn-primary" %>
-<% end %>
+      <%= f.submit "Create your trip", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
