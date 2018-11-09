@@ -33,13 +33,13 @@ puts "Creating trips by groupleader1.."
 
 date = Date.today + 7
 
-["Vamos1", "LetsGo1", "Hasta Luego1"].each do |trip_name|
+["Vamos", "LetsGo", "Hasta Luego"].each do |trip_name|
   Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader1, deadline_date: date)
 end
 
 puts "Creating trips by groupleader2.."
 
-["Vamos2", "LetsGo2", "Hasta Luego2"].each do |trip_name|
+["Summer2019", "NewYearsEve", "SpringBreak"].each do |trip_name|
   Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader2, deadline_date: date)
 end
 
@@ -47,11 +47,11 @@ puts "Creating expired trips by groupleader1.."
 
   old_date = Date.today - 7
 
-  old_trip_1 = Trip.create!(name: "old trip 1", picture: "https://source.unsplash.com/random", user: groupleader1, deadline_date: old_date)
+  old_trip_1 = Trip.create!(name: "EasterHoliday", picture: "https://source.unsplash.com/random", user: groupleader1, deadline_date: old_date)
 
 puts "Creating expired trips by groupleader2.."
 
-  old_trip_2 = Trip.create!(name: "old trip 2", picture: "https://source.unsplash.com/random", user: groupleader2, deadline_date: old_date)
+  old_trip_2 = Trip.create!(name: "SkiWeek", picture: "https://source.unsplash.com/random", user: groupleader2, deadline_date: old_date)
 
 puts "Creating user_trips for groupleaders1 and 2.."
 groupleaders = [groupleader1, groupleader2]

@@ -1,7 +1,7 @@
 <!-- new.html.erb -->
 
 <%= simple_form_for @trip do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, label: "Trip Name" %>
 
 <%= f.fields_for :destinations do |ff| %>
          <% 3.times do |i| %>
