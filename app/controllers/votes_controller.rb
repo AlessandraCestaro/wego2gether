@@ -34,7 +34,6 @@ class VotesController < ApplicationController
       @vote.user = current_invited_user
       @vote.save
     end
-
     redirect_to trip_path(params[:trip_id])
 	end
 
