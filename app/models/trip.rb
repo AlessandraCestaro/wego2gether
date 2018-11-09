@@ -45,17 +45,40 @@ class Trip < ApplicationRecord
     users
   end
 
-  def winning_destination
-    sum_votes = []
+# Returns an array with the sum of ratings for all destinations of a specific trip
+  def all_trip_ratings
+    array = []
+
     self.destinations.each do |destination|
       sum = 0
       destination.votes.each do |vote|
-       sum += vote.rating
-       if sum >= sum_votes.max
-        sum_votes.push(destination)
-       end
+        sum += vote.rating
+        array << sum
       end
     end
+    array
   end
 
+# Returns an integer, which is the sum of ratings for the destination(s) that received max ratings, for a specific trip
+  def max_rating
+    array = self.all_trip_ratings
+    max_rating = array.max
+  end
+
+# Returns an array containing all destinations for a trip which achieved maximum rating (votes)
+  def winning_destination
+    winner = []
+    self.destinations.each do |destination|
+      sum = 0
+      destination.votes.each do |vote|
+        sum += vote.rating
+        if sum >= self.max_rating
+          winner << destination
+        end
+      end
+    end
+    winner
+  end
+
+# End of class
 end

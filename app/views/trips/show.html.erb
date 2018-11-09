@@ -3,65 +3,66 @@
 <!-- if all users have voted || if trip.deadline_date < today
 display FINAL DESTINATION + MEMBERS-->
 
-<% if @trip.invited_users_all.size == @trip.users_voted.size || @trip.deadline_date < today %>
+<% if (@trip.invited_users_all.size == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
-<h2>The winning destination is:</h2>
-<%= @trip.winning_destination %>
+  <h2>The winning destination is:</h2>
+<!-- At the moment if there is a "parimerito", it shows a random result. To fix -->
+  <p> <%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %> </p>
 
-<h3>Participants are:</h3>
-<ul>
-  <% @accepted.each do |user| %>
-    <li>
-    <%= user.first_name %>
-    </li>
-  <% end %>
-</ul>
-
-
-<% else %>
-<!-- ELSE: If not all users have voted and trip has not expired -->
-<h1> <%= @trip.name %> </h1>
-<img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
+  <h3>Participants are:</h3>
+  <ul>
+    <% @accepted.each do |user| %>
+      <li>
+      <%= user.first_name %>
+      </li>
+    <% end %>
+  </ul>
 
 
-<br>
-<h2>Participating - have voted:</h2>
-<ul>
-  <% @voted.each do |user| %>
-    <li>
-    <%= user.first_name %>
-    </li>
-  <% end %>
-</ul>
+  <% else %>
+  <!-- ELSE: If not all users have voted and trip has not expired -->
+  <h1> <%= @trip.name %> </h1>
+  <img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
 
-<br>
-<h2>Participating - still need to vote:</h2>
-<ul>
-  <% @novoted.each do |user| %>
-    <li>
-    <%= user.first_name %>
-    </li>
-  <% end %>
-</ul>
 
-<br>
-<h2>Pending Invitees:</h2>
-<ul>
-  <% @pending.each do |user| %>
-    <li>
-    <%= user.first_name %>
-    </li>
-  <% end %>
-</ul>
+  <br>
+  <h2>Participating - have voted:</h2>
+  <ul>
+    <% @voted.each do |user| %>
+      <li>
+      <%= user.first_name %>
+      </li>
+    <% end %>
+  </ul>
 
-<br>
-<h2>Declined:</h2>
-<ul>
-  <% @declined.each do |user| %>
-    <li>
-    <%= user.first_name %>
-    </li>
-  <% end %>
-</ul>
+  <br>
+  <h2>Participating - still need to vote:</h2>
+  <ul>
+    <% @novoted.each do |user| %>
+      <li>
+      <%= user.first_name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <br>
+  <h2>Pending Invitees:</h2>
+  <ul>
+    <% @pending.each do |user| %>
+      <li>
+      <%= user.first_name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <br>
+  <h2>Declined:</h2>
+  <ul>
+    <% @declined.each do |user| %>
+      <li>
+      <%= user.first_name %>
+      </li>
+    <% end %>
+  </ul>
 
 <% end %>

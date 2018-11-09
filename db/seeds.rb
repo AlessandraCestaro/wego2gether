@@ -45,9 +45,17 @@ puts "Creating trips.."
 date = Date.today + 7
 
 ["Vamos", "LetsGo", "Hasta Luego"].each do |trip_name|
-	date = Date.new()
-	Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader, deadline_date: date)
+  Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader, deadline_date: date)
 end
+
+puts "Creating expired trips.."
+
+old_date = Date.today - 7
+
+["OldTrip1", "OldTrip2"].each do |trip_name|
+  Trip.create!(name: trip_name, picture: "https://source.unsplash.com/random", user: groupleader, deadline_date: old_date)
+end
+
 
 puts "Creating user_trips.."
 
