@@ -47,8 +47,12 @@ class TripsController < ApplicationController
 		#post >>> update the friends' list
 		@trip = Trip.find(params[:id])
 		@trip.update(trip_params)
-		user = current_user
-
+		#crate a new instance of UserTrip for Group Leader
+		UserTrip.create(
+			trip_id: @trip[:id],
+			user_id: current_user[:id],
+			state: "accepted"
+			)
 		params["trip"]["friends"].each do |friend|
 			if !friend["phone_number"].blank?
 			  user = User.create(
@@ -59,7 +63,6 @@ class TripsController < ApplicationController
 			  UserTrip.create(
 				trip_id: @trip[:id],
 				user_id: user[:id],
-				state: "pending"
 		      )
 		    end
 		end
