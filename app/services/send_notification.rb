@@ -3,10 +3,10 @@ class SendNotification
   AUTH_TOKEN = '8b9d2f5e6c5f097e8384aee21bb39c05'
 
   WHITELIST_WHATSAPP = [
-    'whatsapp:+393452504867',
-    'whatsapp:+33609885198',
-    'whatsapp:+4917681139769',
-    'whatsapp:+393342900726',
+    '+393452504867',
+    '+33609885198',
+    '+4917681139769',
+    '+393342900726',
   ]
 
   def initialize(user, trip)

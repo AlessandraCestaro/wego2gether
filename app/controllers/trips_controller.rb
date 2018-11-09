@@ -30,6 +30,7 @@ class TripsController < ApplicationController
 		date = Date.today + 7
 		@trip = Trip.new(trip_params)
 		@trip.deadline_date = date
+		@trip.picture = "https://source.unsplash.com/random"
 		@trip.user_id = current_user[:id]
 		@trip.save
 		params["trip"]["destinations"].each do |destination|
