@@ -15,12 +15,12 @@
            <i class="fas fa-user-circle avatar dropdown-toggle" id= "navbar-wagon-menu" data-toggle = "dropdown"></i> 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to trips_path do %>
                 <%= t(".all-trips", default: "All Trips") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <%= t(".create-group", default: "New Trip") %>
               <% end %>
             </li>
@@ -43,11 +43,11 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to "#" do %>
+          <li><%= link_to trips_path do %>
               <%= t(".all-trips", default: "All Trips") %>
               <% end %>
           </li>
-          <li><%= link_to "#" do %>
+          <li><%= link_to root_path do %>
               <%= t(".create-group", default: "New Trip") %>
               <% end %>
           </li>
