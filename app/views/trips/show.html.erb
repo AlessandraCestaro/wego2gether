@@ -6,7 +6,8 @@ display FINAL DESTINATION + MEMBERS-->
 <% if (@trip.invited_users_all.size == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
   <h2>The winning destination is:</h2>
-<!-- At the moment if there is a "parimerito", it shows a random result. To fix -->
+<!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->
+
   <p> <%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %> </p>
 
   <h3>Participants are:</h3>
