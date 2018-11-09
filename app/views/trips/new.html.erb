@@ -4,9 +4,8 @@
       <%= simple_form_for @trip do |f| %>
         <%= f.input :name %>
 
-      <%= f.fields_for :destinations do |ff| %>
-               <% 3.times do |i| %>
-
+<%= simple_form_for @trip do |f| %>
+  <%= f.input :name, label: "Trip Name" %>
                <div class="row">
                  <div class="col-md-6">
                    <%= ff.input :city, input_html: { name: "trip[destinations][][city]" } %>
