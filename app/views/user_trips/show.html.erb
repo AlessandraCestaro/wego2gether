@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-sm-12 col-md-4" style="text-align: center">
 
-        <h1>YOU HAVE BEEN INVITED ON A TRIP</h1>
+        <h1>HI <%= current_invited_user.first_name %>, YOU HAVE BEEN INVITED ON A TRIP</h1>
+
           <br>
           <p> The trip is called </p>
           <h2><%= @trip.name %></h2>

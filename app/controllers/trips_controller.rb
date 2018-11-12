@@ -8,7 +8,7 @@ class TripsController < ApplicationController
 	end
 
 	def show
-		@trip = Trip.find(params[:id])
+	@trip = Trip.find(params[:id])
     @pending = @trip.invited_users_pending
     @accepted = @trip.invited_users_accepted
     @declined = @trip.invited_users_declined
@@ -65,17 +65,23 @@ class TripsController < ApplicationController
 			)
 		params["trip"]["friends"].each do |friend|
 			if !friend["phone_number"].blank?
-			  user = User.create(
+			  previous = User.where(phone_number: friend["phone_number"]).first
+
+
+
+			  user = previous || User.create(
 				first_name: friend["first_name"],
-				last_name: friend["last_name"],
 				phone_number: friend["phone_number"],
 				email: "#{friend["phone_number"]}@friend.com",
-				password: "invitedfriend2018"
+				password: "invitedfriend2018",
+				password_confirmation: "invitedfriend2018",
 			  )
 			  UserTrip.create(
 				trip: @trip,
 				user: user
 		      )
+             puts "user.id : #{user.id}, user.email : #{user.email}"
+
             SendNotification.new(user, @trip).send_invitation
 		    end
 		end
