@@ -33,7 +33,7 @@ class VotesController < ApplicationController
       next if previous_one
 
       @vote = Vote.new(vote.permit!)
-      @vote.user = current_invited_user
+      @vote.user = current_invited_user || current_user
       @vote.save
     end
     redirect_to trip_path(params[:trip_id])
