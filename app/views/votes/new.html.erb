@@ -17,6 +17,18 @@
       </ul>
         <%= f.button :submit, value: 'Submit score' %>
       <% end %>
+
+<% content_for :js do  %>
+<% if current_user == @trip.user %>
+      <script>
+        swal({
+        title: "Cool!",
+        text: "You've just invited your friends!",
+        icon: "success"
+        });
+      </script> 
+<% end %>
+<% end %>
     </div>
   </div>
 </div>

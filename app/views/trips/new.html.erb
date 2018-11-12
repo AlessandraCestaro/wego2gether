@@ -1,21 +1,30 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :name, label: "Trip Name" %>
 
-<%= f.fields_for :destinations do |ff| %>
-         <% 3.times do |i| %>
+    <%= f.fields_for :destinations do |ff| %>
+      <% 3.times do |i| %>        
+        <div class="row destination" style="display: <%= i.zero? ? 'block' : 'none' %>;">
+          <div class="col-md-6" >
+            <%= ff.input :city, input_html: { name: "trip[destinations][][city]", id: "search"  } %>
+          </div> 
+        </div>
+      <% end %>
+    <% end %>
 
-         <div class="row">
-           <div class="col-md-6">
-             <%= ff.input :city, input_html: { name: "trip[destinations][][city]" } %>
-           </div>
-           <div class="col-md-6">
-             <%= ff.input :country, input_html: { name: "trip[destinations][][country]" } %>
-           </div>
-         </div>
- <% end %>
-<% end %>
+    <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
+    <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
+    <%= f.submit "Create your trip", class: "btn btn-primary" %>
+  <% end %>
 
 
-<%= f.submit "Create your trip", class: "btn btn-primary" %>
-<% end %>
 
+
+
+
+<!-- <div id="map-example-container"></div>
+<input type="search" id="input-map" class="form-control" placeholder="Where are we going?" />
+
+<style>
+  #map-example-container {height: 300px};
+</style>
+ -->

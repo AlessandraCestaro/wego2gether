@@ -5,21 +5,22 @@
       <%= simple_form_for @trip do |f| %>
 
       <%= f.fields_for :friends do |ff| %>
-               <% 5.times do |i| %>
+        <% 10.times do |i| %>
 
-               <div class="row">
-                 <div class="col-md-4">
-                   <%= ff.input :first_name, input_html: { name: "trip[friends][][first_name]" } %>
-                 </div>
-                 <div class="col-md-4">
-                   <%= ff.input :phone_number, input_html: { name: "trip[friends][][phone_number]" } %>
-                 </div>
-               </div>
-       <% end %>
+          <div class="row friends" style="display: <%= i.zero? ? 'block' : 'none' %>;">
+            <div class="col-md-4">
+              <%= ff.input :first_name, label: "Name", input_html: { name: "trip[friends][][first_name]" } %>
+            </div>
+            <div class="col-md-4">
+              <%= ff.input :phone_number, input_html: { name: "trip[friends][][phone_number]" } %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
+      <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
+      <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
 
-
-      <%= f.submit "Send Invites", class: "btn btn-primary" %>
+      <%= f.submit "Send Invites", class: "btn btn-primary", id: "sweet-alert-submit" %>
       <% end %>
     </div>
   </div>
