@@ -6,7 +6,7 @@ display FINAL DESTINATION + MEMBERS-->
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <% if (@trip.invited_users_all.size == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
+      <% if (@trip.invited_users_accepted.size == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
         <h2>The winning destination is:</h2>
       <!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->

@@ -7,7 +7,7 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :name, label: "Trip Name" %>
                <div class="row">
-                 <div class="col-md-6">
+                 <div class="col-md-6" id="search">
                    <%= ff.input :city, input_html: { name: "trip[destinations][][city]" } %>
                  </div>
                  <div class="col-md-6">
