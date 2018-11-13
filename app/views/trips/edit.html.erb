@@ -12,15 +12,17 @@
               <%= ff.input :first_name, label: "Name", input_html: { name: "trip[friends][][first_name]" } %>
             </div>
             <div class="col-md-4">
-              <%= ff.input :phone_number, input_html: { name: "trip[friends][][phone_number]" } %>
+              <%= ff.input :phone_number, label: "Phone Number", input_html: { name: "trip[friends][][phone_number]" } %>
             </div>
           </div>
         <% end %>
       <% end %>
-      <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
-      <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
-
-      <%= f.submit "Send Invites", class: "btn btn-primary", id: "sweet-alert-submit" %>
+      <div class="col-sm-12 col-md-4" style="text-align: center">
+        <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
+        <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
+        <br>
+        <%= f.submit "Send Invites", class: "btn btn-primary", id: "sweet-alert-submit" %>
+      </div>
       <% end %>
     </div>
   </div>
