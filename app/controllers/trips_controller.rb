@@ -38,12 +38,10 @@ class TripsController < ApplicationController
 			if !destination["city"].blank? #or use next
 			  Destination.create(
 				trip: @trip,
-				city: destination["city"],
-				country: destination["country"]
+				city: destination["city"]
 			  )
 		    end
 		end
-
 		redirect_to edit_trip_path(@trip[:id])
 	end
 

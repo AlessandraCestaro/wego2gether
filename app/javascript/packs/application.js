@@ -6,14 +6,18 @@ import swal from 'sweetalert';
 $(document).ready(function(){
 
 
-	if (document.querySelector('#search')) {
-			var placesAutocomplete = places({
-			  appId: 'plC8UYAMHK2J',
-			  apiKey: '1269f51d6f6aceff6a532f29caa6fdb0',
-			  container: document.querySelector('#search')
-			})
-		
-	}
+
+
+	var inputs = document.querySelectorAll('.algolia');
+
+[].forEach.call(inputs, function(item) {
+      var placesAutocomplete = places({
+        appId: 'plC8UYAMHK2J',
+        apiKey: '1269f51d6f6aceff6a532f29caa6fdb0',
+        container: item
+      })
+});
+
 
 $("#add-extra-field").click(function () {
   $(".destination:hidden").first().show();
@@ -26,7 +30,7 @@ $("#remove-extra-field").click(function () {
 });
 
 
-});
+
 
 $("#add-extra-field").click(function () {
   $(".friends:hidden").first().show();
@@ -36,6 +40,7 @@ $("#remove-extra-field").click(function () {
   if( $(".friends:visible").length > 1 ){
     $(".friends:visible").last().hide();
   }
+});
 
 
 });

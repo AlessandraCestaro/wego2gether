@@ -1,20 +1,27 @@
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :name, label: "Trip Name" %>
-
+<div class="container">
+  <div class="row">
+    <%= simple_form_for @trip do |f| %>
+      <div class="col-sm-12 col-md-4">
+        <%= f.input :name, label: "Trip Name", placeholder: "Ex: Summer Holidays", style: "align-center" %>
+      </div>
     <%= f.fields_for :destinations do |ff| %>
       <% 3.times do |i| %>        
-        <div class="row destination" style="display: <%= i.zero? ? 'block' : 'none' %>;">
-          <div class="col-md-6" >
-            <%= ff.input :city, input_html: { name: "trip[destinations][][city]", id: "search"  } %>
+        <div class="destination" style="display: <%= i.zero? ? 'block' : 'none' %>;">
+          <div class="col-sm-12 col-md-4" >
+            <%= ff.input :city, label: "Destination", placeholder: "City Name",  input_html: { name: "trip[destinations][][city]", id: "search_#{i}" , class: "algolia"} %>
           </div> 
         </div>
       <% end %>
     <% end %>
-
-    <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
-    <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
-    <%= f.submit "Create your trip", class: "btn btn-primary" %>
-  <% end %>
+      <div class="col-sm-12 col-md-4" style="text-align: center">
+        <button type="button" class="btn btn-primary new-trip" id="add-extra-field">+</button>
+        <button type="button" class="btn btn-primary new-trip" id="remove-extra-field">-</button>
+        <br>
+        <%= f.submit "Create your trip", class: "btn btn-primary new-trip-submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
 

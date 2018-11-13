@@ -1,34 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h1>The Vote</h1>
-      <h2>Rate your destinations here</h2>
-
-      <%= simple_form_for [@trip, @vote] do |f| %>
-
-      <ul>
-        <% @destinations.each do |destination| %>
-            <%= destination.city %>
-
+      <h2>Time to vote!</h2>
+        <%= simple_form_for [@trip, @vote] do |f| %>
+        <ul>
+          <% @destinations.each do |destination| %>
+            <%= image_tag(destination.picture, class: "destination-vote") %>
+            <%= destination.city.split(",").first %>
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
-
             <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
+          <% end %>
+         </ul>
+          <%= f.button :submit, value: 'Submit score' %>
         <% end %>
-      </ul>
-        <%= f.button :submit, value: 'Submit score' %>
-      <% end %>
 
 <% content_for :js do  %>
-<% if current_user == @trip.user %>
-      <script>
-        swal({
-        title: "Cool!",
-        text: "You've just invited your friends!",
-        icon: "success"
-        });
-      </script> 
-<% end %>
+  <% if current_user == @trip.user %>
+    <script>
+      swal({
+      title: "Cool!",
+      text: "You've just invited your friends!",
+      icon: "success"
+      });
+    </script> 
+  <% end %>
 <% end %>
     </div>
   </div>
 </div>
+
+
+
+

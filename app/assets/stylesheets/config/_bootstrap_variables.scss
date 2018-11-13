@@ -11,16 +11,16 @@ $font-size-base: 18px;
 
 // Colors
 $gray-base:       $gray;
-$brand-primary:   $blue;
+$brand-primary:   #00ABAA;
 $brand-success:   $green;
 $brand-info:      $yellow;
 $brand-danger:    $red;
 $brand-warning:   $orange;
 
 // Buttons & inputs' radius
-$border-radius-base:  2px;
-$border-radius-large: 2px;
-$border-radius-small: 2px;
+$border-radius-base:  50px;
+$border-radius-large: 50px;
+$border-radius-small: 50px;
 
 
 // Patch to make simple_form compatible with bootstrap 3
@@ -51,3 +51,21 @@ $border-radius-small: 2px;
 }
 
 // Override other variables below!
+
+.form-control {
+    margin: 20px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.btn {
+	margin: 10px;
+	font-family: 'Roboto', sans-serif;
+}
+
+
+label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: light;
+	
+}
