@@ -18,9 +18,9 @@ $brand-danger:    $red;
 $brand-warning:   $orange;
 
 // Buttons & inputs' radius
-$border-radius-base:  50px;
-$border-radius-large: 50px;
-$border-radius-small: 50px;
+$border-radius-base:  2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;
 
 
 // Patch to make simple_form compatible with bootstrap 3
@@ -53,19 +53,55 @@ $border-radius-small: 50px;
 // Override other variables below!
 
 .form-control {
-    margin: 20px 0;
+    margin: 3px 0;
     font-family: 'Roboto', sans-serif;
 }
 
 
 .btn {
-	margin: 10px;
+	margin: 5px;
 	font-family: 'Roboto', sans-serif;
 }
 
 
 label {
 	font-family: 'Roboto', sans-serif;
-	font-weight: light;
+	font-weight: lighter !important;
+    font-size: 20px;
 	
+}
+
+
+abbr { display: none; }
+
+.btn.btn-primary.new-trip-submit {
+	margin-top: 100px;
+	border-radius: 50px;
+	height: 60px;
+    width: 180px;
+    font-size: 23px;
+}
+
+#add-extra-field {
+	margin-top: 20px;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	background-color: #F1BC52;
+	border-color: #F1BC52;
+	font-weight: bold;
+	font-size: 20px;
+    color: grey;
+}
+
+#remove-extra-field {
+	margin-top: 20px;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	background-color: #F1BC52;
+	border-color: #F1BC52;
+	font-weight: bold;
+	font-size: 20px;
+    color: grey;
 }
