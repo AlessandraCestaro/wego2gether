@@ -10,4 +10,5 @@ class Vote < ApplicationRecord
     votes = Vote.all.where(destination: destination)
   end
 
+
 end
