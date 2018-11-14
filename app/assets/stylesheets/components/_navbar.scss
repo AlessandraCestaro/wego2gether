@@ -8,11 +8,12 @@
   align-items: center;
   justify-content: space-between;
   font-family: Lobster;
-  font-color: #03444A;
+  font-color: #00303F;
   font-weight: lighter;
   background-color: rgba(241, 188, 82, 0.35);
   .a {
-  color: #03444A;
+  color: #00303F;
+  font-size: 30px;
   }
   margin-bottom: 10px;
 }
@@ -21,6 +22,13 @@
 .navbar-wagon-brand {
   align-self: center
 }
+
+a.navbar-wagon-brand {
+  color: #00303F;
+  font-size: 23px;
+  opacity: 1.2;
+}
+
 
 /* User Avatar */
 .navbar-wagon .avatar i {
@@ -44,7 +52,7 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #00303F;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
