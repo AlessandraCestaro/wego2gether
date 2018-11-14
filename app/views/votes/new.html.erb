@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h2>Time to vote!</h2>
+      <h4 class="text-center">Time to vote!</h4>
         <%= simple_form_for [@trip, @vote] do |f| %>
         <ul>
           <% @destinations.each do |destination| %>
-            <%= image_tag(destination.picture, class: "destination-vote") %>
-            <%= destination.city.split(",").first %>
+            <div class="destination-vote" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= destination.picture %>);">
+            <p class="destination-name-pic"><%= destination.city.split(",").first.capitalize%></p> 
+            </div>  
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
             <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
           <% end %>
          </ul>
-          <%= f.button :submit, value: 'Submit score' %>
+          <%= f.button :submit, value: 'Submit score', class: "btn btn-primary new-trip-submit"%>
         <% end %>
 
 <% content_for :js do  %>
