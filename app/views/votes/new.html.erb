@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h2>Time to vote!</h2>
+      <h4 class="text-center">Time to vote!</h4>
         <%= simple_form_for [@trip, @vote] do |f| %>
         <ul>
           <% @destinations.each do |destination| %>
             <%= image_tag(destination.picture, class: "destination-vote") %>
-            <%= destination.city.split(",").first %>
+            <p class="destination-name-pic"><%= destination.city.split(",").first%></p>   
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
             <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
           <% end %>
          </ul>
-          <%= f.button :submit, value: 'Submit score' %>
+          <%= f.button :submit, value: 'Submit score', class: "btn btn-primary new-trip-submit"%>
         <% end %>
 
 <% content_for :js do  %>

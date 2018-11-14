@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row text-center">
-    <h4>Trip Name</h4>
+  <div class="row ">
+    <h4 class="form-label">Trip Name:</h4>
     <%= simple_form_for @trip do |f| %>
       <div class="col-sm-12 col-md-4">
-        <%= f.input :name, label: false, placeholder: "Ex: Summer Holidays", style: "align-center" %>
+        <%= f.input :name, label: false, placeholder: "Ex: Summer Holidays" %>
       </div>
-      <h4>Destinations</h4>
+      <h4 class="form-label">Destinations:</h4>
     <%= f.fields_for :destinations do |ff| %>
       <% 3.times do |i| %>        
         <div class="destination" style="display: <%= i.zero? ? 'block' : 'none' %>;">

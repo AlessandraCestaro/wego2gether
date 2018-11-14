@@ -1,4 +1,10 @@
-.destination-vote img{
-    width: 80%;
-    height: 50%;
+.destination-vote {
+    height: 150px;
+    width: 300px;
+    border-radius: 2px;
+    background-image: linear-gradient(red, yellow);
+}
+
+ul {
+	padding: 0px;
 }
