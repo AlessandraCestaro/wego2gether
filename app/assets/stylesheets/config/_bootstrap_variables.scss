@@ -10,7 +10,7 @@ $body-bg:                 $light-gray;
 $font-size-base: 18px;
 
 // Colors
-$gray-base:       $gray;
+$gray-base:       #1F2223;
 $brand-primary:   #00ABAA;
 $brand-success:   $green;
 $brand-info:      $yellow;
@@ -53,7 +53,6 @@ $border-radius-small: 2px;
 // Override other variables below!
 
 .form-control {
-    margin: 3px 0;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -91,7 +90,7 @@ abbr { display: none; }
 	border-color: #F1BC52;
 	font-weight: bold;
 	font-size: 20px;
-    color: grey;
+    color: #637E87;
 }
 
 #remove-extra-field {
@@ -103,5 +102,5 @@ abbr { display: none; }
 	border-color: #F1BC52;
 	font-weight: bold;
 	font-size: 20px;
-    color: grey;
+  color: #637E87;
 }

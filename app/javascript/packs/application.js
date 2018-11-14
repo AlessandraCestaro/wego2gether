@@ -5,9 +5,6 @@ import swal from 'sweetalert';
 
 $(document).ready(function(){
 
-
-
-
 	var inputs = document.querySelectorAll('.algolia');
 
 [].forEach.call(inputs, function(item) {
@@ -48,9 +45,6 @@ $("#remove-extra-field").click(function () {
 
 
 export { bindSweetAlertButtonDemo };
-
-
-
 
 
 //############### ALGOLIA LEAFLET MAP ############################
