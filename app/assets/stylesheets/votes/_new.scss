@@ -1,4 +1,21 @@
-.destination-vote img{
-    width: 80%;
-    height: 50%;
+.destination-vote {
+	height: 175px;
+    border-radius: 2px;
+    background-size: cover !important;
+    background-position: center; 
+    font-family: Lobster;
+    font: #F1BC52;
+    margin: 10px;
+}
+
+.destination-name-pic {
+	font-family: Lobster;
+    color: #F1BC52;
+    margin: 10px;
+    font-size: 30px;
+}
+
+
+ul {
+	padding: 0px;
 }
