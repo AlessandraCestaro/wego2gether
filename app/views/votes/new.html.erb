@@ -9,11 +9,14 @@
             <p class="destination-name-pic"><%= destination.city.split(",").first.capitalize%></p> 
             </div>  
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
-            <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
+            <%= f.input :rating, as: "range",:input_html => { name: "destinations[][rating]", min: 0, max: 5, step: 1, "data-rangeslider" => true, id: "vote-rating-#{destination.id}" } %>
           <% end %>
          </ul>
           <%= f.button :submit, value: 'Submit score', class: "btn btn-primary new-trip-submit"%>
         <% end %>
+
+
+
 
 <% content_for :js do  %>
   <% if current_user == @trip.user %>

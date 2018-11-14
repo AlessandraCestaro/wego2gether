@@ -1,4 +1,6 @@
 import "bootstrap";
+import "jquery";
+import range from "rangeslider.js";
 import places from 'places.js';
 import swal from 'sweetalert';
 // import L from 'leaflet';
@@ -26,9 +28,6 @@ $("#remove-extra-field").click(function () {
   }
 });
 
-
-
-
 $("#add-extra-field").click(function () {
   $(".friends:hidden").first().show();
 });
@@ -39,12 +38,15 @@ $("#remove-extra-field").click(function () {
   }
 });
 
+console.log($('input[type="range"]'))
+$('input[type="range"]').rangeslider();
 
 });
 
 
 
 export { bindSweetAlertButtonDemo };
+
 
 
 //############### ALGOLIA LEAFLET MAP ############################
