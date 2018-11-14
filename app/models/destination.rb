@@ -10,13 +10,23 @@ class Destination < ApplicationRecord
     trip = self.trip
     destinations = Destination.all.where(trip: trip)
   end
-  
+
   def picture
   	city = self.city
   	api = "https://api.teleport.org/api/urban_areas/slug:#{city.split(",").first.downcase}/images/"
-    api_result = JSON.parse(open(api).read)
 
-    return api_result["photos"][0]["image"]["web"]
+    url = begin
+      api_result = JSON.parse(open(api).read)
+      api_result["photos"][0]["image"]["web"]
+    rescue Exception => e
+      self.default_picture
+    end
+
+    url
+  end
+
+  def default_picture
+    "https://unsplash.com/photos/aHu_xuRvsZ4"
   end
 
 end
