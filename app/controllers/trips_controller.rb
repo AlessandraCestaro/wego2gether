@@ -65,23 +65,27 @@ class TripsController < ApplicationController
 			if !friend["phone_number"].blank?
 			  previous = User.where(phone_number: friend["phone_number"]).first
 
-
-
 			  user = previous || User.create(
-				first_name: friend["first_name"],
-				phone_number: friend["phone_number"],
-				email: "#{friend["phone_number"]}@friend.com",
-				password: "invitedfriend2018",
-				password_confirmation: "invitedfriend2018",
+  				first_name: friend["first_name"],
+  				phone_number: friend["phone_number"],
+  				email: "#{friend["phone_number"]}@friend.com",
+  				password: "invitedfriend2018",
+  				password_confirmation: "invitedfriend2018",
 			  )
 			  UserTrip.create(
-				trip: @trip,
-				user: user
-		      )
-             puts "user.id : #{user.id}, user.email : #{user.email}"
+  				trip: @trip,
+  				user: user
+		    )
 
-            SendNotification.new(user, @trip).send_invitation
-		    end
+        puts "user.id : #{user.id}, user.email : #{user.email}"
+
+        # this can crash anytime:
+        begin
+          SendNotification.new(user, @trip).send_invitation
+        rescue Exception => e # Exception is raised when you have an error
+          Rails.logger.info("Error on SendNotification. error message: #{e.message}")
+        end
+		  end
 		end
 
 		redirect_to new_trip_vote_path(@trip)

@@ -4,7 +4,7 @@ class SendNotification
 
   WHITELIST_WHATSAPP = [
     '+393452504867',
-    '+33609885198',
+    # '+33609885198',
     '+4917681139769',
     '+393342900726',
   ]
@@ -36,7 +36,7 @@ class SendNotification
   def send_invitation_sms
     @client.messages.create(
       body: @body,
-      from: '+14155238886',
+      from: '+13135588301',
       to: "#{@user.phone_number}"
     )
   end

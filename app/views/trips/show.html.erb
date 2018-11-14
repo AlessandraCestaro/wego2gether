@@ -6,14 +6,14 @@ display FINAL DESTINATION + MEMBERS-->
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <% if (@trip.invited_users_accepted.size == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
+      <% if ((@trip.invited_users_all.size - @trip.invited_users_declined.size) == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
-        <h2>The winning destination is:</h2>
+        <h3>The winning destination is:</h3>
       <!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->
 
         <p> <%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %> </p>
 
-        <h3>Participants are:</h3>
+        <p>Participants are:</p>
         <ul>
           <% @accepted.each do |user| %>
             <li>
@@ -25,12 +25,12 @@ display FINAL DESTINATION + MEMBERS-->
 
         <% else %>
         <!-- ELSE: If not all users have voted and trip has not expired -->
-        <h1> <%= @trip.name %> </h1>
+        <h1 id="showTripsTitle"> <%= @trip.name %> </h1>
         <img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
 
 
         <br>
-        <h2>Participating - have voted:</h2>
+        <p>Have voted and are going!</p>
         <ul>
           <% @voted.each do |user| %>
             <li>
@@ -40,7 +40,7 @@ display FINAL DESTINATION + MEMBERS-->
         </ul>
 
         <br>
-        <h2>Participating - still need to vote:</h2>
+        <p>Are going! Still need to vote...</p>
         <ul>
           <% @novoted.each do |user| %>
             <li>
@@ -50,7 +50,7 @@ display FINAL DESTINATION + MEMBERS-->
         </ul>
 
         <br>
-        <h2>Pending Invitees:</h2>
+        <p>Pending invitees</p>
         <ul>
           <% @pending.each do |user| %>
             <li>
@@ -60,7 +60,7 @@ display FINAL DESTINATION + MEMBERS-->
         </ul>
 
         <br>
-        <h2>Declined:</h2>
+        <p>Won't make it</p>
         <ul>
           <% @declined.each do |user| %>
             <li>
