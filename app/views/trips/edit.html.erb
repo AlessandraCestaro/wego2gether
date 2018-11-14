@@ -1,7 +1,7 @@
 <!-- edit.html.erb -->
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-4 text-center">
       <%= simple_form_for @trip do |f| %>
 
       <%= f.fields_for :friends do |ff| %>
@@ -21,7 +21,7 @@
         <button type="button" class="btn btn-primary" id="add-extra-field">+</button>
         <button type="button" class="btn btn-primary" id="remove-extra-field">-</button>
         <br>
-        <%= f.submit "Send Invites", class: "btn btn-primary", id: "sweet-alert-submit" %>
+        <%= f.submit "Send Invites", class: "btn btn-primary new-trip-submit"%>
       </div>
       <% end %>
     </div>
