@@ -21,9 +21,9 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <%= yield :js %>
     </body>
 </html>
