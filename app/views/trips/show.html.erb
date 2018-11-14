@@ -8,66 +8,72 @@ display FINAL DESTINATION + MEMBERS-->
     <div class="col-sm-12 col-md-4">
       <% if ((@trip.invited_users_all.size - @trip.invited_users_declined.size) == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
-        <h3>The winning destination is:</h3>
-      <!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->
+          <h1 id="showTripsTitle">The winning destination is:</h1>
+        <!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->
 
-        <p> <%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %> </p>
+        <div class="banner" style="background-image: url('<%= image_path(@trip.winning_destination.first.picture_mobile, class: "destination-vote")%>')">
+          <div class="banner-content">
+            <h1><%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %></h1>
+          </div>
+        </div>
 
-        <p>Participants are:</p>
-        <ul>
-          <% @accepted.each do |user| %>
-            <li>
-            <%= user.first_name %>
-            </li>
+          <div class="block">
+          <p style="font-size: 16px">PARTICIPANTS</p>
+              <% @accepted.each do |user| %>
+            <div>
+              <p class="text-center"> <%= user.first_name %> </p>
+              <%= image_tag("profileicon.svg", class:"avatar-large")%>
+            </div>
           <% end %>
-        </ul>
+          </div>
 
 
         <% else %>
         <!-- ELSE: If not all users have voted and trip has not expired -->
-        <h1 id="showTripsTitle"> <%= @trip.name %> </h1>
-        <img src= <%= @trip.picture %> alt="Trip picture" height="100" width="100">
+          <h1 id="showTripsTitle"> <%= "#{@trip.name.capitalize}: trip status" %> </h1>
 
+            <p style="font-size: 16px">Participating and have voted for destination!</p>
+            <div class="block">
+              <% @voted.each do |user| %>
+              <div>
+                <p class="text-center"> <%= user.first_name %> </p>
+                <%= image_tag("profileicon.svg", class:"avatar-large")%>
+              </div>
+              <% end %>
+            </div>
 
-        <br>
-        <p>Have voted and are going!</p>
-        <ul>
-          <% @voted.each do |user| %>
-            <li>
-            <%= user.first_name %>
-            </li>
-          <% end %>
-        </ul>
+          <p style="font-size: 16px">Participating but didn't vote destination yet...</p>
+          <div class="block">
+            <% @novoted.each do |user| %>
+            <div>
+              <p class="text-center"> <%= user.first_name %> </p>
+              <%= image_tag("profileicon.svg")%>
+            </div>
+            <% end %>
+          </div>
 
-        <br>
-        <p>Are going! Still need to vote...</p>
-        <ul>
-          <% @novoted.each do |user| %>
-            <li>
-            <%= user.first_name %>
-            </li>
-          <% end %>
-        </ul>
+          <p style="font-size: 16px">Pending invitees</p>
+          <div class="block">
+            <% @pending.each do |user| %>
+            <div>
+              <p class="text-center"> <%= user.first_name %> </p>
+              <div>
+              <%= image_tag("profileicon.svg", class:"avatar-large") %>
+              </div>
+            </div>
+            <% end %>
+          </div>
 
-        <br>
-        <p>Pending invitees</p>
-        <ul>
-          <% @pending.each do |user| %>
-            <li>
-            <%= user.first_name %>
-            </li>
-          <% end %>
-        </ul>
-
-        <br>
-        <p>Won't make it</p>
-        <ul>
-          <% @declined.each do |user| %>
-            <li>
-            <%= user.first_name %>
-            </li>
-          <% end %>
-        </ul>
+          <p style="font-size: 16px">Won't make it...</p>
+          <div class="block">
+            <% @declined.each do |user| %>
+            <div class="divAvatar">
+            <p class="text-center"> <%= user.first_name %> </p>
+              <br>
+              <%= image_tag("profileicon.svg")%>
+            </div>
+            <% end %>
+          </div>
 
       <% end %>
     </div>

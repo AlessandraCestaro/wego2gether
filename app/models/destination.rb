@@ -25,6 +25,20 @@ class Destination < ApplicationRecord
     url
   end
 
+  def picture_mobile
+    city = self.city
+    api = "https://api.teleport.org/api/urban_areas/slug:#{city.split(",").first.downcase}/images/"
+
+    url = begin
+      api_result = JSON.parse(open(api).read)
+      api_result["photos"][0]["image"]["mobile"]
+    rescue Exception => e
+      self.default_picture
+    end
+
+    url
+  end
+
   def default_picture
     "https://unsplash.com/photos/aHu_xuRvsZ4"
   end
