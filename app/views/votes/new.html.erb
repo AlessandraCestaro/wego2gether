@@ -5,8 +5,9 @@
         <%= simple_form_for [@trip, @vote] do |f| %>
         <ul>
           <% @destinations.each do |destination| %>
-            <%= image_tag(destination.picture, class: "destination-vote") %>
-            <p class="destination-name-pic"><%= destination.city.split(",").first%></p>   
+            <div class="destination-vote" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= destination.picture %>);">
+            <p class="destination-name-pic"><%= destination.city.split(",").first.capitalize%></p> 
+            </div>  
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
             <%= f.input :rating, :input_html => { name: "destinations[][rating]" } %>
           <% end %>

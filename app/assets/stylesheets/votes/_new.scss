@@ -1,9 +1,20 @@
 .destination-vote {
-    height: 150px;
-    width: 300px;
+	height: 175px;
     border-radius: 2px;
-    background-image: linear-gradient(red, yellow);
+    background-size: cover !important;
+    background-position: center; 
+    font-family: Lobster;
+    font: #F1BC52;
+    margin: 10px;
 }
+
+.destination-name-pic {
+	font-family: Lobster;
+    color: #F1BC52;
+    margin: 10px;
+    font-size: 30px;
+}
+
 
 ul {
 	padding: 0px;
