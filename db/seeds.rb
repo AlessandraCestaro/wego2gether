@@ -21,7 +21,7 @@ puts "Login:"
 puts "test@test.com"
 puts "pass: 123456"
 puts "---------------------"
-groupleader1 = User.create!(email: "test1@test.com", password: "123456", password_confirmation: "123456", first_name: "GL1", last_name: "Leader1", phone_number: "3342922333" )
+groupleader1 = User.create!(email: "ale@gmail.com", password: "123456", password_confirmation: "123456", first_name: "Ale", last_name: "Sandra", phone_number: "3342922333" )
 groupleader2 = User.create!(email: "test2@test.com", password: "123456", password_confirmation: "123456", first_name: "GL2", last_name: "Leader2", phone_number: "3342922334" )
 
 
