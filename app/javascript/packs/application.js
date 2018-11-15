@@ -43,8 +43,10 @@ $('input[type="range"]').each(function (index, input) {
  $(input).rangeslider();
 
   $(input).on("change", function (element) {
-    $(input).parents(".slidecontainer").find("span").text($(this).val())
+    $(input).parents(".slidecontainer").find(".counterRating").text($(this).val())
   })
+
+  $(input).trigger("change")
 })
 
 
