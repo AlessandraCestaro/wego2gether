@@ -1,21 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4" style="text-align: center">
-
-        <h1>HI <%= current_invited_user.first_name %>, YOU HAVE BEEN INVITED ON A TRIP</h1>
-
-          <br>
-          <p> The trip is called </p>
-          <h2><%= @trip.name %></h2>
-          <br>
-          <br>
-          <p> ...and we need you to vote on a destination </p>
-          <br>
-          <%= simple_form_for [@trip, @user_trip] do |f| %>
-            <%= f.button :submit, name: "user_trip[state]", value: "accepted" %>
-            <%= f.button :submit, name: "user_trip[state]", value: "declined" %>
+      <h1 style="font-family:Lobster">Ciao <%= current_invited_user.first_name %>!</h1>
+      <h3>You're invited to <div style="font-weight: bold; font-size: 30px;"><%= @trip.name %></div></h3>
+      <br>
+        <p style="font-size: 20px; font-weight: bold;">FRIENDS INVITED</p>
+        <div class="block">
+          <% @trip.invited_users_all.each do |user| %>
+          <div>
+            <%= image_tag("avatar.png", class:"avatar-large")%>
+            <p class="text-center"> <%= user.first_name %> </p>
+          </div>
           <% end %>
-
+        </div>
+      <%= simple_form_for [@trip, @user_trip] do |f| %>
+        <%= f.button :submit, name: "user_trip[state]", value: "ACCEPT", class: "btn btn-primary" %>
+        <%= f.button :submit, name: "user_trip[state]", value: "DECLINE", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
