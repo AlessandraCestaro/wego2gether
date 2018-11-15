@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4 class="text-center">Time to vote!</h4>
+      <h3 id="showTripsTitle">..and now time to vote!</h3>
         <%= simple_form_for [@trip, @vote] do |f| %>
         <ul>
           <% @destinations.each do |destination| %>

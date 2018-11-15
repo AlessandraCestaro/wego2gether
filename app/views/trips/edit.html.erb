@@ -1,6 +1,7 @@
 <!-- edit.html.erb -->
 <div class="container">
   <div class="row">
+    <h3 id="showTripsTitle">Add your friends</h3>
     <div class="col-sm-12 col-md-4">
       <%= simple_form_for @trip do |f| %>
 
@@ -9,11 +10,11 @@
 
           <div class="row friends" style="display: <%= i.zero? ? 'block' : 'none' %>;">
             <div class="col-sm-12 col-md-4">
-              <h4 class="form-label">Name:</h4>
+              <h4 class="form-label-edit">Name:</h4>
               <%= ff.input :first_name, label: false, input_html: { name: "trip[friends][][first_name]" } %>
             </div>
             <div class="col-sm-12 col-md-4">
-              <h4 class="form-label">Phone Number:</h4>
+              <h4 class="form-label-edit">Phone Number:</h4>
               <%= ff.input :phone_number, label: false, input_html: { name: "trip[friends][][phone_number]" } %>
             </div>
           </div>
