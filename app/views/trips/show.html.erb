@@ -30,47 +30,26 @@ display FINAL DESTINATION + MEMBERS-->
 
         <% else %>
         <!-- ELSE: If not all users have voted and trip has not expired -->
-          <h1 id="showTripsTitle"> <%= "#{@trip.name.capitalize}: trip status" %> </h1>
-
-            <p style="font-size: 16px">Participating and have voted for destination!</p>
+          <h1 id="showTripsTitle"> <%= "#{@trip.name.capitalize}" %> </h1>
+          <br>
+            <p style="font-size: 20px; font-weight: bold">VOTED</p>
             <div class="block">
               <% @voted.each do |user| %>
               <div>
+                <%= image_tag("avatar.png", class:"avatar-large")%>
                 <p class="text-center"> <%= user.first_name %> </p>
-                <%= image_tag("profileicon.svg", class:"avatar-large")%>
               </div>
               <% end %>
             </div>
-
-          <p style="font-size: 16px">Participating but didn't vote destination yet...</p>
-          <div class="block">
-            <% @novoted.each do |user| %>
-            <div>
-              <p class="text-center"> <%= user.first_name %> </p>
-              <%= image_tag("profileicon.svg")%>
-            </div>
-            <% end %>
-          </div>
-
-          <p style="font-size: 16px">Pending invitees</p>
+          <br>
+          <p style="font-size: 20px; font-weight: bold">VOTE PENDING</p>
           <div class="block">
             <% @pending.each do |user| %>
             <div>
-              <p class="text-center"> <%= user.first_name %> </p>
               <div>
-              <%= image_tag("profileicon.svg", class:"avatar-large") %>
+              <%= image_tag("avatar.png", class:"avatar-large") %>
               </div>
-            </div>
-            <% end %>
-          </div>
-
-          <p style="font-size: 16px">Won't make it...</p>
-          <div class="block">
-            <% @declined.each do |user| %>
-            <div class="divAvatar">
-            <p class="text-center"> <%= user.first_name %> </p>
-              <br>
-              <%= image_tag("profileicon.svg")%>
+              <p class="text-center"> <%= user.first_name %> </p>
             </div>
             <% end %>
           </div>
