@@ -56,8 +56,12 @@ $border-radius-small: 2px;
     font-family: 'Roboto', sans-serif;
 }
 
-.from-label {
-	margin: 10px;
+.form-label {
+	padding: 0px 15px;
+}
+
+.form-label-edit {
+	font-size: 20px;
 }
 
 .form-inputs {
@@ -91,7 +95,7 @@ abbr { display: none; }
 
 .btn.btn-primary.new-trip-submit {
 	margin-top: 100px;
-	border-radius: 50px;
+	border-radius: 2px;
 	height: 60px;
     width: 180px;
     font-size: 23px;
