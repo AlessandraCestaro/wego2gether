@@ -13,12 +13,12 @@ display FINAL DESTINATION + MEMBERS-->
 
         <div class="banner-city" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path(@trip.winning_destination.first.picture_mobile, class: "destination-vote")%>')">
           <div class="banner-content">
-            <h1 class="destination-name-pic"><%= @trip.winning_destination.first.city.split(",").first.capitalize%></h1>
-            <h2 class="destination-name-pic"><%= @trip.winning_destination.first.city.split(",").last.capitalize%></h2>
+            <h1 class="destination-name-pic" style="letter-spacing: 6px;"><%= @trip.winning_destination.first.city.split(",").first.strip.capitalize%></h1>
+            <h2 class="destination-name-pic"><%= @trip.winning_destination.first.city.split(",").last.strip.capitalize%></h2>
           </div>
         </div>
 
-          <div class="block" style= "margin-top: 12px; border-radius: 4px">
+          <div class="block" style= "border-radius: 2px; margin-top: -5px;">
               <% @accepted.each do |user| %>
             <div>
               <p class="text-center"> <%= user.first_name %> </p>
