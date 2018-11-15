@@ -8,21 +8,21 @@ display FINAL DESTINATION + MEMBERS-->
     <div class="col-sm-12 col-md-4">
       <% if ((@trip.invited_users_all.size - @trip.invited_users_declined.size) == @trip.users_voted.size) || (@trip.deadline_date < Date.today) %>
 
-          <h1 id="showTripsTitle">The winning destination is:</h1>
+          <h1 id="showTripsTitle">The winner is...</h1>
         <!-- At the moment if there is a "parimerito", it shows a random result. To fix show page when trip expired and no one has voted-->
 
-        <div class="banner" style="background-image: url('<%= image_path(@trip.winning_destination.first.picture_mobile, class: "destination-vote")%>')">
+        <div class="banner-city" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path(@trip.winning_destination.first.picture_mobile, class: "destination-vote")%>')">
           <div class="banner-content">
-            <h1><%= @trip.winning_destination.first.city.capitalize %>, <%= @trip.winning_destination.first.country %></h1>
+            <h1 class="destination-name-pic"><%= @trip.winning_destination.first.city.split(",").first.capitalize%></h1>
+            <h2 class="destination-name-pic"><%= @trip.winning_destination.first.city.split(",").last.capitalize%></h2>
           </div>
         </div>
 
-          <div class="block">
-          <p style="font-size: 16px">PARTICIPANTS</p>
+          <div class="block" style= "margin-top: 12px; border-radius: 4px">
               <% @accepted.each do |user| %>
             <div>
               <p class="text-center"> <%= user.first_name %> </p>
-              <%= image_tag("profileicon.svg", class:"avatar-large")%>
+              <%= image_tag("avatar.png", class:"avatar-large")%>
             </div>
           <% end %>
           </div>

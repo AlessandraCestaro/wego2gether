@@ -8,6 +8,7 @@ class SendNotification
     '+4917681139769',
     '+393342900726',
     '+393402138251',
+    '+393202341159',
   ]
 
   def initialize(user, trip)
