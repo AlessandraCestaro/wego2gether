@@ -8,6 +8,15 @@
     </div>
       <%= link_to "Create a group trip", new_trip_path, class: "btn btn-treehouse"  %>
   </div>
+
+
 </div>
 </div>
 </div>
+
+<% UserTrip.all.order("created_at DESC").each do |user_trip| %>
+  <% url = "/trips/#{user_trip.trip_id}/user_trips/#{user_trip.user_id}" %>
+  <div>
+  <a href="<%= url %>">invitation for <%= user_trip.user.phone_number %></a>
+  </div>
+<% end %>
