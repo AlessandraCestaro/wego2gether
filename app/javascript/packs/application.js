@@ -39,7 +39,14 @@ $("#remove-extra-field").click(function () {
 });
 
 console.log($('input[type="range"]'))
-$('input[type="range"]').rangeslider();
+$('input[type="range"]').each(function (index, input) {
+ $(input).rangeslider();
+
+  $(input).on("change", function (element) {
+    $(input).parents(".slidecontainer").find("span").text($(this).val())
+  })
+})
+
 
 });
 

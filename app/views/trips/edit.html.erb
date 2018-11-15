@@ -8,11 +8,11 @@
         <% 10.times do |i| %>
 
           <div class="row friends" style="display: <%= i.zero? ? 'block' : 'none' %>;">
-            <div class="col-md-4">
+            <div class="col-sm-12 col-md-4">
               <h4 class="form-label">Name:</h4>
               <%= ff.input :first_name, label: false, input_html: { name: "trip[friends][][first_name]" } %>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-12 col-md-4">
               <h4 class="form-label">Phone Number:</h4>
               <%= ff.input :phone_number, label: false, input_html: { name: "trip[friends][][phone_number]" } %>
             </div>

@@ -42,7 +42,13 @@ class TripsController < ApplicationController
 			  )
 		    end
 		end
-		redirect_to edit_trip_path(@trip[:id])
+
+		if @trip.save
+           redirect_to edit_trip_path(@trip[:id])
+        else
+  	       render :new
+  	    end
+		
 	end
 
 	def edit
