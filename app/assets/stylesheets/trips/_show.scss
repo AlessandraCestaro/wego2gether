@@ -23,10 +23,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  // height: 20em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .banner h1 {
   font-size: 50px;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.banner-city {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  height: 20em;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .divAvatar {
