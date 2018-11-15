@@ -2,7 +2,7 @@
 	height: 175px;
     border-radius: 2px;
     background-size: cover !important;
-    background-position: center !important; 
+    background-position: center !important;
     font-family: Lobster;
     font: #F1BC52;
 }
@@ -11,8 +11,9 @@
 	  font-family: Lobster;
     color: #F1BC52;
     margin: 10px;
-    font-size: 30px;
+    font-size: 40px;
     text-shadow: -2px 0 #03444A, 0 2px #03444A, 2px 0 #03444A, 0 -2px #03444A;
+    opacity:.8;
 }
 
 
@@ -30,7 +31,7 @@ ul {
     -webkit-appearance: none;
     width: 100%;
     height: 15px;
-    border-radius: 5px;   
+    border-radius: 5px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
@@ -43,7 +44,7 @@ ul {
     appearance: none;
     width: 25px;
     height: 25px;
-    border-radius: 50%; 
+    border-radius: 50%;
     background: #00ABAA;
     cursor: pointer;
 }
