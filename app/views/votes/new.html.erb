@@ -9,10 +9,15 @@
             <p class="destination-name-pic"><%= destination.city.split(",").first.capitalize%></p> 
             </div>  
             <%= f.input :destination_id, :as => :hidden, :input_html => { :value => destination.id, name: "destinations[][destination_id]" } %>
-            <%= f.input :rating, as: "range",:input_html => { name: "destinations[][rating]", min: 0, max: 5, step: 1, "data-rangeslider" => true, id: "vote-rating-#{destination.id}" } %>
+            <div class="slidecontainer">
+            <%= f.input :rating, label: false, as: "range", :input_html => { name: "destinations[][rating]", min: 0, max: 5, step: 1, "data-rangeslider" => true, class: "slider", id: "vote-rating-#{destination.id}" } %>
+            <p>Rating for <%= destination.city.split(",").first%>: <span class="textInput"></span>/5</p>
+            </div>
           <% end %>
          </ul>
+         <div class="col-sm-12 col-md-4 text-center">
           <%= f.button :submit, value: 'Submit score', class: "btn btn-primary new-trip-submit"%>
+        </div>
         <% end %>
 
 
