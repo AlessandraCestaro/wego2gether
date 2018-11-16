@@ -1,17 +1,19 @@
 <!-- index.html.erb -->
 <div class="container">
+
   <div class="row">
 
     <!-- Display managed trips of current user: -->
-    <p>Your managed trips:</p>
+    <h1 id="showTripsTitle">Trips you created:</h1>
 
     <% current_user.managed_trips.each do |trip| %>
-      <div class="col-xs-6 col-sm-4">
+      <div class="col-xs-12 col-sm-4" style="margin-top: 1em">
 
         <% if (trip.users_voted.include?(current_user)) || (trip.deadline_date < Date.today) %>
           <%= link_to trip_path(trip) do %>
             <%= render "partial/card", trip: trip %>
           <% end %>
+
         <% else %>
 
           <%= link_to new_trip_vote_path(trip) do %>
@@ -25,41 +27,62 @@
   </div>
 
 
-
-
 <!-- Display invited-to trips of current user: -->
-<ul>
-  <p>You will be participating to:</p>
-  <% current_user.accepted_trips.each do |trip| %>
-    <% if trip.user != current_user %>
-      <li>
-        <% if (trip.users_voted.include?(current_user)) || (trip.deadline_date < Date.today) %>
-          <%= link_to trip.name, trip_path(trip)%>
-        <% else %>
-          <%= link_to trip.name, new_trip_vote_path(trip)%>
-        <% end %>
-        <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+  <div class="row">
 
+    <h1 id="showTripsTitle">Trips you are going to:</h1>
 
-<!-- Display invited-to trips of current user: -->
-<ul>
-  <p>You are invited to:</p>
-  <% current_user.pending_trips.each do |trip| %>
-    <% usertrip = UserTrip.find_by(user: current_user, trip: trip) %>
-    <% if (trip.user != current_user) %>
-      <li>
-        <% if (trip.deadline_date >= Date.today) %>
-        <%= link_to trip.name, trip_user_trip_path(trip, usertrip)%>
-      <% else %>
-        <%= link_to trip.name, declined_trip_user_trip_path(trip, usertrip)%>
+      <% current_user.accepted_trips.each do |trip| %>
+        <div class="col-xs-12 col-sm-4" style="margin-top: 1em">
+
+          <% if trip.user != current_user %>
+            <% if (trip.users_voted.include?(current_user)) || (trip.deadline_date < Date.today) %>
+              <%= link_to trip_path(trip) do %>
+                <%= render "partial/card", trip: trip %>
+              <% end %>
+
+            <% else %>
+
+              <%= link_to new_trip_vote_path(trip) do %>
+                <%= render "partial/card", trip: trip %>
+              <% end %>
+            <% end %>
+
+          <% end %>
+        </div>
+
       <% end %>
-      <img src= <%= trip.picture %> alt="Trip picture" height="42" width="42">
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+
   </div>
+
+
+
+<!-- Display invited-to trips of current user: -->
+  <div class="row">
+
+      <h1 id="showTripsTitle">Trips you are invited to:</h1>
+
+        <% current_user.pending_trips.each do |trip| %>
+
+          <div class="col-xs-12 col-sm-4" style="margin-top: 1em">
+            <% usertrip = UserTrip.find_by(user: current_user, trip: trip) %>
+
+          <% if (trip.user != current_user) %>
+              <% if (trip.deadline_date >= Date.today) %>
+                <%= link_to trip_user_trip_path(trip, usertrip) do %>
+                  <%= render "partial/card", trip: trip %>
+                <% end %>
+
+              <% else %>
+                <%= link_to declined_trip_user_trip_path(trip, usertrip) do %>
+                  <%= render "partial/card", trip: trip %>
+                <% end %>
+              <% end %>
+
+          <% end %>
+        </div>
+        <% end %>
+  </div>
+
+<!-- Closes container div -->
+</div>
