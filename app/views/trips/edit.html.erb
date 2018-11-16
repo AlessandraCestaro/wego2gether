@@ -15,7 +15,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
               <h4 class="form-label-edit">Phone Number:</h4>
-              <%= ff.input :phone_number, label: false, input_html: { name: "trip[friends][][phone_number]" } %>
+              <%= ff.input :phone_number, as: :string, label: false, input_html: { name: "trip[friends][][phone_number]" } %>
             </div>
           </div>
         <% end %>
