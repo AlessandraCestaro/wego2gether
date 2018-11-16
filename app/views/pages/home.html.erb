@@ -14,9 +14,19 @@
 </div>
 </div>
 
+<div class="container">
+
 <% UserTrip.all.order("created_at DESC").each do |user_trip| %>
+  <% next unless user_trip.user %>
+  <% next unless user_trip.trip %>
+
   <% url = "/trips/#{user_trip.trip_id}/user_trips/#{user_trip.user_id}" %>
+  <br>
+  <br>
   <div>
-  <a href="<%= url %>">invitation for <%= user_trip.user.phone_number %></a>
+  <a href="<%= url %>">Invit for <%= user_trip.user.phone_number %> (trip: <%= user_trip.trip.name %>)</a>
   </div>
+  <br>
 <% end %>
+
+</div>
