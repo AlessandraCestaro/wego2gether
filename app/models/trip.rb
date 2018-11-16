@@ -26,23 +26,17 @@ class Trip < ApplicationRecord
   end
 
   def users_voted
-    users = []
-    self.destinations.each do |destination|
-      destination.votes.each do |vote|
-        if self.invited_users_accepted.include?(vote.user)
-          users.push(vote.user) unless users.include?(vote.user)
-        end
-      end
-    end
-    users
+    votes = Vote.where(destination_id: self.destinations.pluck(:id).uniq)
+    users_id = votes.map(&:user_id).uniq
+    User.where(id: users_id)
   end
 
   def users_accepted_no_vote
-    users = []
-      self.invited_users_accepted.each do |user|
-        users.push(user) unless self.users_voted.include?(user)
-      end
-    users
+    users_voted_ids = self.users_voted.map(&:id)
+    invited_users_accepted_ids = self.invited_users_all.map(&:id)
+
+    no_voted_user_ids = invited_users_accepted_ids - users_voted_ids
+    User.where(id: no_voted_user_ids)
   end
 
 # Returns an array with the sum of ratings for all destinations of a specific trip
